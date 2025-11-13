@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://img.icons8.com/ios-filled/50/000000/camera.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://img.icons8.com/ios-filled/32/000000/camera.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#1f2937',
+              light: '#4b5563',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .hero-bg {
+      background-image: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.75)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    h1,
+    h3 {
+      font-weight: 500 !important;
+    }
+
+    .lightbox-backdrop {
+      backdrop-filter: blur(6px);
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 transition-colors duration-500">
+  <header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur dark:bg-gray-900/80">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <a href="#hero" class="text-lg font-semibold tracking-wide text-gray-900 dark:text-gray-100">Photography Portfolio</a>
+      <nav class="hidden items-center gap-6 text-sm font-medium text-gray-600 md:flex dark:text-gray-300">
+        <a href="#about" class="hover:text-gray-900 dark:hover:text-white">About</a>
+        <a href="#portfolio" class="hover:text-gray-900 dark:hover:text-white">Portfolio</a>
+        <a href="#services" class="hover:text-gray-900 dark:hover:text-white">Services</a>
+        <a href="#testimonials" class="hover:text-gray-900 dark:hover:text-white">Testimonials</a>
+        <a href="#contact" class="hover:text-gray-900 dark:hover:text-white">Contact</a>
+        <a href="#blog" class="hover:text-gray-900 dark:hover:text-white">Journal</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="downloadPortfolio" class="hidden rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-black sm:block dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200">
+          Download Portfolio
+        </button>
+        <button id="themeToggle" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800" aria-label="Toggle dark mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg relative flex min-h-screen items-center justify-center">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70"></div>
+      <div class="relative z-10 mx-auto max-w-4xl px-6 text-center text-white animate-on-scroll">
+        <span class="text-sm uppercase tracking-[0.35em] text-gray-200">Photography Portfolio</span>
+        <h1 class="mt-6 text-4xl font-semibold leading-tight md:text-6xl">Alex Carter Photography</h1>
+        <p class="mt-4 text-lg text-gray-200 md:text-xl">Capturing authentic stories through light, lens, and location.</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#portfolio" class="rounded-full bg-white px-8 py-3 text-sm font-semibold uppercase tracking-wider text-gray-900 shadow-lg transition hover:-translate-y-1 hover:bg-gray-100">
+            View Portfolio
+          </a>
+          <button id="openHeroCarousel" class="flex items-center gap-2 rounded-full border border-white/80 px-6 py-3 text-sm uppercase tracking-wide text-white transition hover:bg-white/10">
+            <span>Featured Shots</span>
+            <span aria-hidden="true">➜</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative bg-white py-24 dark:bg-gray-950">
+      <div class="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-[1.1fr,0.9fr]">
+        <div class="animate-on-scroll">
+          <h2 class="text-sm uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400">About Me</h2>
+          <h3 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">Storyteller behind the lens.</h3>
+          <p class="mt-6 text-lg text-gray-600 dark:text-gray-300">
+            I am Alex Carter, a travel and lifestyle photographer based in Portland. Over the past decade, I have collaborated
+            with brands, couples, and creatives to create timeless imagery that feels both cinematic and intimate.
+          </p>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">
+            My work focuses on natural light, authentic emotion, and thoughtful compositions that reveal the character of my subjects.
+          </p>
+          <div class="mt-10 grid gap-6 sm:grid-cols-3">
+            <div class="rounded-2xl border border-gray-200 p-5 dark:border-gray-800 dark:bg-gray-900">
+              <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Experience</h4>
+              <p class="mt-2 text-lg font-medium text-gray-900 dark:text-white">10+ Years</p>
+            </div>
+            <div class="rounded-2xl border border-gray-200 p-5 dark:border-gray-800 dark:bg-gray-900">
+              <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Clients</h4>
+              <p class="mt-2 text-lg font-medium text-gray-900 dark:text-white">150+ Shoots</p>
+            </div>
+            <div class="rounded-2xl border border-gray-200 p-5 dark:border-gray-800 dark:bg-gray-900">
+              <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Locations</h4>
+              <p class="mt-2 text-lg font-medium text-gray-900 dark:text-white">25 Countries</p>
+            </div>
+          </div>
+          <div class="mt-10 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:-translate-y-1 dark:bg-white dark:text-gray-900 dark:hover:-translate-y-1">Portraits</span>
+            <span class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:-translate-y-1 dark:bg-white dark:text-gray-900 dark:hover:-translate-y-1">Weddings</span>
+            <span class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:-translate-y-1 dark:bg-white dark:text-gray-900 dark:hover:-translate-y-1">Documentary</span>
+            <span class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:-translate-y-1 dark:bg-white dark:text-gray-900 dark:hover:-translate-y-1">Editorial</span>
+            <span class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:-translate-y-1 dark:bg-white dark:text-gray-900 dark:hover:-translate-y-1">Product</span>
+          </div>
+        </div>
+        <div class="flex justify-center md:justify-end">
+          <div class="relative">
+            <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-gray-900 via-gray-700 to-gray-500 opacity-30 blur-3xl dark:opacity-50"></div>
+            <img
+              src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80"
+              alt="Photographer portrait"
+              class="relative h-full w-full max-w-sm rounded-3xl object-cover shadow-2xl"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="bg-gray-50 py-24 dark:bg-gray-950">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="animate-on-scroll text-center">
+          <h2 class="text-sm uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400">Portfolio</h2>
+          <h3 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">Featured Projects</h3>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">Filter by category to explore the stories captured across continents.</p>
+        </div>
+        <div class="mt-10 flex flex-wrap justify-center gap-3">
+          <button class="portfolio-filter activeFilter rounded-full border border-gray-300 bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:border-gray-900 hover:text-gray-900 dark:border-gray-700 dark:bg-white dark:text-gray-900 dark:hover:border-white dark:hover:text-white" data-filter="all">All</button>
+          <button class="portfolio-filter rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-gray-900 hover:text-gray-900 dark:border-gray-700 dark:text-gray-300 dark:hover:border-white dark:hover:text-white" data-filter="nature">Nature</button>
+          <button class="portfolio-filter rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-gray-900 hover:text-gray-900 dark:border-gray-700 dark:text-gray-300 dark:hover:border-white dark:hover:text-white" data-filter="portraits">Portraits</button>
+          <button class="portfolio-filter rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-gray-900 hover:text-gray-900 dark:border-gray-700 dark:text-gray-300 dark:hover:border-white dark:hover:text-white" data-filter="events">Events</button>
+          <button class="portfolio-filter rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-gray-900 hover:text-gray-900 dark:border-gray-700 dark:text-gray-300 dark:hover:border-white dark:hover:text-white" data-filter="travel">Travel</button>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1200&q=80" alt="Mountain landscape" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Nature</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Emerald Peaks</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">Sunrise over the Andes captured during a four-day trek.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="portraits">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Portrait photography" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Portraits</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Light & Shadow</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">Playing with contrast and color blocking in studio.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="events">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Event photography" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Events</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Moments in Motion</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">Documenting the art and energy of live performance.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="travel">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80" alt="Travel photography" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Travel</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Desert Dreams</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">Golden hour portraits across the Sahara dunes.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Forest photography" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Nature</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Mist & Pines</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">Quiet morning hike through the Pacific Northwest.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="events">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80" alt="Wedding photography" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Events</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Ever After</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">An intimate vineyard ceremony outside Florence.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="portraits">
+            <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80" alt="Studio portrait" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Portraits</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Chromatic Muse</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">An exploration of color theory with bold lighting.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="travel">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="City at night" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Travel</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Neon Tokyo</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">Long exposure cityscapes across Shinjuku and Shibuya.</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-2 dark:bg-gray-900" data-category="travel">
+            <img src="https://images.unsplash.com/photo-1443890923422-7819ed4101c0?auto=format&fit=crop&w=1200&q=80" alt="Northern lights over snowy landscape" class="h-60 w-full object-cover transition duration-700 hover:scale-110" loading="lazy">
+            <figcaption class="flex flex-1 flex-col justify-between p-6">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Travel</span>
+              <h4 class="mt-2 text-xl font-semibold text-gray-900 dark:text-white">Aurora Trails</h4>
+              <p class="mt-1 text-gray-600 dark:text-gray-400">Chasing northern lights across the Arctic Circle.</p>
+            </figcaption>
+          </figure>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-white py-24 dark:bg-gray-950">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="animate-on-scroll text-center">
+          <h2 class="text-sm uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400">Services</h2>
+          <h3 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">Crafted for every story.</h3>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">Flexible packages tailored to your moment, your brand, your legacy.</p>
+        </div>
+        <div class="mt-12 grid gap-8 md:grid-cols-3">
+          <div class="rounded-3xl border border-gray-200 p-8 shadow-lg transition hover:-translate-y-2 dark:border-gray-800 dark:bg-gray-900">
+            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Weddings & Elopements</h4>
+            <p class="mt-3 text-gray-600 dark:text-gray-300">Full-day coverage, engagement session, curated album.</p>
+            <ul class="mt-6 space-y-3 text-sm text-gray-600 dark:text-gray-300">
+              <li>• 800+ edited photographs</li>
+              <li>• Drone footage add-on</li>
+              <li>• Custom heirloom album</li>
+            </ul>
+            <a href="#contact" class="mt-8 inline-flex items-center text-sm font-semibold uppercase tracking-wide text-gray-900 hover:underline dark:text-white">Contact for Quote →</a>
+          </div>
+          <div class="rounded-3xl border border-gray-200 p-8 shadow-lg transition hover:-translate-y-2 dark:border-gray-800 dark:bg-gray-900">
+            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Brand & Editorial</h4>
+            <p class="mt-3 text-gray-600 dark:text-gray-300">Product launches, lookbooks, magazine features.</p>
+            <ul class="mt-6 space-y-3 text-sm text-gray-600 dark:text-gray-300">
+              <li>• Creative direction support</li>
+              <li>• Studio or on-location</li>
+              <li>• Fast-track turnaround</li>
+            </ul>
+            <a href="#contact" class="mt-8 inline-flex items-center text-sm font-semibold uppercase tracking-wide text-gray-900 hover:underline dark:text-white">Request Package →</a>
+          </div>
+          <div class="rounded-3xl border border-gray-200 p-8 shadow-lg transition hover:-translate-y-2 dark:border-gray-800 dark:bg-gray-900">
+            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Retouching & Editing</h4>
+            <p class="mt-3 text-gray-600 dark:text-gray-300">High-end retouching, color grading, and album design.</p>
+            <ul class="mt-6 space-y-3 text-sm text-gray-600 dark:text-gray-300">
+              <li>• RAW to final delivery</li>
+              <li>• Editorial-quality finish</li>
+              <li>• Consistent brand identity</li>
+            </ul>
+            <a href="#contact" class="mt-8 inline-flex items-center text-sm font-semibold uppercase tracking-wide text-gray-900 hover:underline dark:text-white">Book a Consultation →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="bg-gray-50 py-24 dark:bg-gray-950">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="animate-on-scroll text-center">
+          <h2 class="text-sm uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400">Testimonials</h2>
+          <h3 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">Stories from clients.</h3>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">Five-star memories delivered with a personal touch.</p>
+        </div>
+        <div class="relative mt-12 overflow-hidden rounded-3xl bg-white shadow-xl dark:bg-gray-900">
+          <div id="testimonialTrack" class="flex transition-transform duration-700 ease-in-out">
+            <article class="flex w-full shrink-0 flex-col gap-6 p-10 text-left">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=100&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" loading="lazy">
+                <div>
+                  <p class="font-semibold text-gray-900 dark:text-white">Sofia Ramirez</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Wedding Client</p>
+                </div>
+              </div>
+              <p class="text-lg text-gray-700 dark:text-gray-300">“Alex captured every tear, every laugh, every dance. The images are bursting with emotion and artistry.”</p>
+              <p class="text-yellow-400 text-xl">★★★★★</p>
+            </article>
+            <article class="flex w-full shrink-0 flex-col gap-6 p-10 text-left">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=100&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" loading="lazy">
+                <div>
+                  <p class="font-semibold text-gray-900 dark:text-white">Marcus Lee</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Art Director, Shift Studio</p>
+                </div>
+              </div>
+              <p class="text-lg text-gray-700 dark:text-gray-300">“Collaborating with Alex elevated our brand visuals. The attention to detail and storytelling is unmatched.”</p>
+              <p class="text-yellow-400 text-xl">★★★★★</p>
+            </article>
+            <article class="flex w-full shrink-0 flex-col gap-6 p-10 text-left">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=100&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" loading="lazy">
+                <div>
+                  <p class="font-semibold text-gray-900 dark:text-white">Lena Patel</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Product Founder</p>
+                </div>
+              </div>
+              <p class="text-lg text-gray-700 dark:text-gray-300">“Our product launch visuals were bold, modern, and on brand. Alex brought our vision to life.”</p>
+              <p class="text-yellow-400 text-xl">★★★★★</p>
+            </article>
+          </div>
+          <div class="absolute inset-x-0 bottom-6 flex justify-center gap-3">
+            <button class="testimonial-dot h-2 w-10 rounded-full bg-gray-300 transition focus:outline-none dark:bg-gray-700" data-index="0" aria-label="Slide 1"></button>
+            <button class="testimonial-dot h-2 w-10 rounded-full bg-gray-500 transition focus:outline-none dark:bg-gray-400" data-index="1" aria-label="Slide 2"></button>
+            <button class="testimonial-dot h-2 w-10 rounded-full bg-gray-300 transition focus:outline-none dark:bg-gray-700" data-index="2" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-white py-24 dark:bg-gray-950">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="animate-on-scroll text-center">
+          <h2 class="text-sm uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400">Contact</h2>
+          <h3 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">Let's create something unforgettable.</h3>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">Share a few details about your project and I'll be in touch within 48 hours.</p>
+        </div>
+        <div class="mt-12 grid gap-12 lg:grid-cols-[1.1fr,0.9fr]">
+          <form class="rounded-3xl border border-gray-200 bg-gray-50 p-8 shadow-lg dark:border-gray-800 dark:bg-gray-900">
+            <div class="grid gap-6 md:grid-cols-2">
+              <label class="text-left">
+                <span class="text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">Name</span>
+                <input type="text" class="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-gray-900 focus:outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100" placeholder="Your name">
+              </label>
+              <label class="text-left">
+                <span class="text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">Email</span>
+                <input type="email" class="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-gray-900 focus:outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100" placeholder="name@email.com">
+              </label>
+            </div>
+            <label class="mt-6 block text-left">
+              <span class="text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">Message</span>
+              <textarea class="mt-2 h-40 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-gray-900 focus:outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100" placeholder="Tell me about your project"></textarea>
+            </label>
+            <button type="submit" class="mt-8 w-full rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-black dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200">
+              Send Message
+            </button>
+          </form>
+          <div class="space-y-8">
+            <div class="rounded-3xl border border-gray-200 p-8 dark:border-gray-800 dark:bg-gray-900">
+              <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Connect</h4>
+              <p class="mt-3 text-gray-600 dark:text-gray-300">Email: <a href="mailto:hello@alexcarterphoto.com" class="text-gray-900 font-medium transition hover:text-gray-700 dark:text-white dark:hover:text-gray-200">hello@alexcarterphoto.com</a></p>
+              <p class="text-gray-600 dark:text-gray-300">Phone: <a href="tel:+15035551234" class="text-gray-900 font-medium transition hover:text-gray-700 dark:text-white dark:hover:text-gray-200">+1 (503) 555-1234</a></p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a href="https://www.instagram.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-1 hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-400 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.262 2.242 1.324 3.608.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.35 2.633-1.324 3.608-.975.975-2.242 1.262-3.608 1.324-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.324-.975-.975-1.262-2.242-1.324-3.608C2.175 15.646 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.324-3.608.975-.975 2.242-1.262 3.608-1.324C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.17 0-3.548.012-4.795.069-1.033.047-1.594.22-1.963.367-.495.192-.85.423-1.223.796-.373.373-.604.728-.796 1.223-.147.369-.32.93-.367 1.963-.057 1.247-.069 1.625-.069 4.795s.012 3.548.069 4.795c.047 1.033.22 1.594.367 1.963.192.495.423.85.796 1.223.373.373.728.604 1.223.796.369.147.93.32 1.963.367 1.247.057 1.625.069 4.795.069s3.548-.012 4.795-.069c1.033-.047 1.594-.22 1.963-.367.495-.192.85-.423 1.223-.796.373-.373.604-.728.796-1.223.147-.369.32-.93.367-1.963.057-1.247.069-1.625.069-4.795s-.012-3.548-.069-4.795c-.047-1.033-.22-1.594-.367-1.963-.192-.495-.423-.85-.796-1.223-.373-.373-.728-.604-1.223-.796-.369-.147-.93-.32-1.963-.367-1.247-.057-1.625-.069-4.795-.069zm0 3.78a4.437 4.437 0 1 1 0 8.874 4.437 4.437 0 0 1 0-8.874zm0 1.62a2.817 2.817 0 1 0 0 5.634 2.817 2.817 0 0 0 0-5.634zm5.73-2.892a1.036 1.036 0 1 1 0 2.073 1.036 1.036 0 0 1 0-2.073z"></path>
+                  </svg>
+                  Instagram
+                </a>
+                <a href="https://www.behance.net" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-1 hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-400 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M4.8 7.2H9c1.8 0 3 .9 3 2.7 0 1.5-.9 2.4-2.1 2.6v.1c1.5.2 2.5 1.1 2.5 2.9 0 2.1-1.5 3.3-3.7 3.3H4.8V7.2zm3.7 4.5c1.1 0 1.8-.5 1.8-1.6 0-1-.6-1.5-1.7-1.5H6.6v3.1h1.9zm.3 5.1c1.3 0 2-.6 2-1.8 0-1.2-.8-1.8-2.1-1.8H6.6v3.6H8.8zm9.3-4.5c-.1-1-.8-1.6-1.8-1.6-1.2 0-2 .9-2 2.4 0 1.5.8 2.4 2 2.4 1 0 1.7-.6 1.8-1.6h2.1c-.2 2.1-1.7 3.4-3.9 3.4-2.6 0-4.2-1.8-4.2-4.2 0-2.4 1.6-4.2 4.2-4.2 2.2 0 3.7 1.4 3.9 3.3H18.1zm-4-4.4h5.5v1.4h-5.5V7.9z"></path>
+                  </svg>
+                  Behance
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-1 hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-400 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.939v5.667H9.352V9h3.414v1.561h.047c.476-.9 1.637-1.852 3.37-1.852 3.601 0 4.268 2.37 4.268 5.455v6.288zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zm1.777 13.019H3.559V9h3.555v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.222 0z"></path>
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            <div class="h-72 overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-800">
+              <iframe
+                title="Studio Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.712930999346!2d-122.67620722369032!3d45.52306563485295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a0a2c9b45f9%3A0xab1005ec52ffb62!2sPortland%20Art%20Museum!5e0!3m2!1sen!2sus!4v1709849153108!5m2!1sen!2sus"
+                class="h-full w-full border-0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / Journal Section -->
+    <section id="blog" class="bg-gray-50 py-24 dark:bg-gray-950">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="animate-on-scroll text-center">
+          <h2 class="text-sm uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400">Journal</h2>
+          <h3 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">Behind the scenes.</h3>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">Tips, travel notes, and stories from the road.</p>
+        </div>
+        <div class="mt-12 grid gap-8 md:grid-cols-3">
+          <article class="animate-on-scroll rounded-3xl border border-gray-200 bg-white p-6 shadow-lg transition hover:-translate-y-2 dark:border-gray-800 dark:bg-gray-900">
+            <div class="flex flex-col gap-3">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Tips</span>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Mastering Golden Hour Portraits</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Five ways to work with sunlight, shadows, and lens flare in outdoor sessions.</p>
+              <a href="#" class="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-900 hover:underline dark:text-white">Read Story →</a>
+            </div>
+          </article>
+          <article class="animate-on-scroll rounded-3xl border border-gray-200 bg-white p-6 shadow-lg transition hover:-translate-y-2 dark:border-gray-800 dark:bg-gray-900">
+            <div class="flex flex-col gap-3">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Behind the Lens</span>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Documenting Kyoto in the Spring</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">A week of visual storytelling amidst blossoms, bamboo, and rain.</p>
+              <a href="#" class="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-900 hover:underline dark:text-white">Read Story →</a>
+            </div>
+          </article>
+          <article class="animate-on-scroll rounded-3xl border border-gray-200 bg-white p-6 shadow-lg transition hover:-translate-y-2 dark:border-gray-800 dark:bg-gray-900">
+            <div class="flex flex-col gap-3">
+              <span class="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400">Process</span>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white">My Post-Production Workflow</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">From backup to delivery, how I maintain consistency across projects.</p>
+              <a href="#" class="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-900 hover:underline dark:text-white">Read Story →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 bg-white py-12 dark:border-gray-800 dark:bg-gray-950">
+    <div class="mx-auto flex max-w-6xl flex-col gap-10 px-6 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="text-lg font-semibold text-gray-900 dark:text-white">Photography Portfolio</p>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">© <span id="year"></span> Alex Carter. All rights reserved.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+        <a href="#hero" class="hover:text-gray-900 dark:hover:text-white">Home</a>
+        <a href="#about" class="hover:text-gray-900 dark:hover:text-white">About</a>
+        <a href="#services" class="hover:text-gray-900 dark:hover:text-white">Services</a>
+        <a href="#blog" class="hover:text-gray-900 dark:hover:text-white">Journal</a>
+        <a href="#contact" class="hover:text-gray-900 dark:hover:text-white">Contact</a>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="https://www.instagram.com" class="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-1 hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-400 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200" target="_blank" rel="noreferrer">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.262 2.242 1.324 3.608.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.35 2.633-1.324 3.608-.975.975-2.242 1.262-3.608 1.324-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.324-.975-.975-1.262-2.242-1.324-3.608C2.175 15.646 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.324-3.608.975-.975 2.242-1.262 3.608-1.324C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.17 0-3.548.012-4.795.069-1.033.047-1.594.22-1.963.367-.495.192-.85.423-1.223.796-.373.373-.604.728-.796 1.223-.147.369-.32.93-.367 1.963-.057 1.247-.069 1.625-.069 4.795s.012 3.548.069 4.795c.047 1.033.22 1.594.367 1.963.192.495.423.85.796 1.223.373.373.728.604 1.223.796.369.147.93.32 1.963.367 1.247.057 1.625.069 4.795.069s3.548-.012 4.795-.069c1.033-.047 1.594-.22 1.963-.367.495-.192.85-.423 1.223-.796.373-.373.604-.728.796-1.223.147-.369.32-.93.367-1.963.057-1.247.069-1.625.069-4.795s-.012-3.548-.069-4.795c-.047-1.033-.22-1.594-.367-1.963-.192-.495-.423-.85-.796-1.223-.373-.373-.728-.604-1.223-.796-.369-.147-.93-.32-1.963-.367-1.247-.057-1.625-.069-4.795-.069zm0 3.78a4.437 4.437 0 1 1 0 8.874 4.437 4.437 0 0 1 0-8.874zm0 1.62a2.817 2.817 0 1 0 0 5.634 2.817 2.817 0 0 0 0-5.634zm5.73-2.892a1.036 1.036 0 1 1 0 2.073 1.036 1.036 0 0 1 0-2.073z"></path>
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.behance.net" class="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-1 hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-400 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200" target="_blank" rel="noreferrer">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.8 7.2H9c1.8 0 3 .9 3 2.7 0 1.5-.9 2.4-2.1 2.6v.1c1.5.2 2.5 1.1 2.5 2.9 0 2.1-1.5 3.3-3.7 3.3H4.8V7.2zm3.7 4.5c1.1 0 1.8-.5 1.8-1.6 0-1-.6-1.5-1.7-1.5H6.6v3.1h1.9zm.3 5.1c1.3 0 2-.6 2-1.8 0-1.2-.8-1.8-2.1-1.8H6.6v3.6H8.8zm9.3-4.5c-.1-1-.8-1.6-1.8-1.6-1.2 0-2 .9-2 2.4 0 1.5.8 2.4 2 2.4 1 0 1.7-.6 1.8-1.6h2.1c-.2 2.1-1.7 3.4-3.9 3.4-2.6 0-4.2-1.8-4.2-4.2 0-2.4 1.6-4.2 4.2-4.2 2.2 0 3.7 1.4 3.9 3.3H18.1zm-4-4.4h5.5v1.4h-5.5V7.9z"></path>
+          </svg>
+          Behance
+        </a>
+        <a href="https://www.pinterest.com" class="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-1 hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-400 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200" target="_blank" rel="noreferrer">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2C6.58 2 4 5.65 4 8.97c0 1.97.74 3.72 2.33 4.37.26.11.49 0 .56-.28.05-.2.17-.69.22-.9.08-.27.04-.36-.16-.59-.46-.55-.76-1.25-.76-2.25 0-2.89 2.15-5.48 5.6-5.48 3.05 0 4.73 1.87 4.73 4.38 0 3.29-1.45 6.07-3.61 6.07-1.19 0-2.09-.98-1.8-2.18.34-1.45 1.01-3.01 1.01-4.06 0-.94-.5-1.72-1.55-1.72-1.23 0-2.22 1.27-2.22 2.98 0 1.09.37 1.83.37 1.83s-1.27 5.38-1.5 6.33c-.45 1.88-.07 4.19-.04 4.42.02.11.16.14.23.05.1-.12 1.42-1.76 1.87-3.39.13-.47.74-2.85.74-2.85.37.71 1.46 1.33 2.62 1.33 3.45 0 5.79-3.07 5.79-7.19C18 5.24 15.3 2 12.04 2z"></path>
+          </svg>
+          Pinterest
+        </a>
+      </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox-backdrop fixed inset-0 z-50 hidden h-full w-full items-center justify-center bg-black/80 p-6">
+    <button id="closeLightbox" class="absolute right-6 top-6 text-3xl text-white">×</button>
+    <img id="lightboxImage" src="" alt="Expanded portfolio" class="max-h-[80vh] max-w-5xl rounded-3xl object-contain shadow-2xl">
+  </div>
+
+  <!-- Hero Carousel Modal -->
+  <div id="heroCarouselModal" class="fixed inset-0 z-50 hidden bg-black/90 p-6 text-white">
+    <button id="closeHeroCarousel" class="absolute right-6 top-6 text-3xl">×</button>
+    <div class="mx-auto flex h-full max-w-5xl flex-col items-center justify-center gap-6">
+      <div class="relative w-full overflow-hidden rounded-3xl bg-black shadow-2xl">
+        <div id="heroCarouselTrack" class="flex transition-transform duration-700 ease-in-out">
+          <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=1600&q=80" alt="Sunset couple portrait" class="h-[400px] w-full shrink-0 object-cover" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=80" alt="Mountain landscape" class="h-[400px] w-full shrink-0 object-cover" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80" alt="Studio portrait with color gels" class="h-[400px] w-full shrink-0 object-cover" loading="lazy">
+        </div>
+        <button id="heroPrev" class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 px-4 py-2 text-xl">‹</button>
+        <button id="heroNext" class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 px-4 py-2 text-xl">›</button>
+      </div>
+      <div class="flex gap-3">
+        <span class="hero-dot h-3 w-3 rounded-full bg-white/40" data-index="0"></span>
+        <span class="hero-dot h-3 w-3 rounded-full bg-white/20" data-index="1"></span>
+        <span class="hero-dot h-3 w-3 rounded-full bg-white/20" data-index="2"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const root = document.documentElement;
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const downloadPortfolio = document.getElementById('downloadPortfolio');
+    const yearEl = document.getElementById('year');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const closeLightbox = document.getElementById('closeLightbox');
+    const heroCarouselModal = document.getElementById('heroCarouselModal');
+    const openHeroCarousel = document.getElementById('openHeroCarousel');
+    const closeHeroCarousel = document.getElementById('closeHeroCarousel');
+    const heroCarouselTrack = document.getElementById('heroCarouselTrack');
+    const heroDots = document.querySelectorAll('.hero-dot');
+    const heroPrev = document.getElementById('heroPrev');
+    const heroNext = document.getElementById('heroNext');
+    const testimonialTrack = document.getElementById('testimonialTrack');
+    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    const animationTargets = document.querySelectorAll('.animate-on-scroll');
+
+    const updateThemeIcon = () => {
+      const darkMode = root.classList.contains('dark');
+      themeIcon.textContent = darkMode ? '☀️' : '🌙';
+    };
+
+    const setTheme = (theme) => {
+      if (theme === 'dark') {
+        root.classList.add('dark');
+        body.classList.add('bg-gray-950', 'text-gray-100');
+      } else {
+        root.classList.remove('dark');
+        body.classList.remove('bg-gray-950', 'text-gray-100');
+      }
+      localStorage.setItem('theme', theme);
+      updateThemeIcon();
+    };
+
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+    } else if (prefersDarkScheme.matches) {
+      setTheme('dark');
+    } else {
+      updateThemeIcon();
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = root.classList.toggle('dark');
+      if (isDark) {
+        body.classList.add('bg-gray-950', 'text-gray-100');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('bg-gray-950', 'text-gray-100');
+        localStorage.setItem('theme', 'light');
+      }
+      updateThemeIcon();
+    });
+
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+
+    downloadPortfolio?.addEventListener('click', () => {
+      window.print();
+    });
+
+    document.querySelectorAll('.portfolio-item img').forEach((img) => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightbox.classList.remove('hidden');
+      });
+    });
+
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+    });
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) {
+        lightbox.classList.add('hidden');
+      }
+    });
+
+    const filters = document.querySelectorAll('.portfolio-filter');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        filters.forEach((b) => b.classList.remove('activeFilter', 'bg-gray-900', 'text-white', 'dark:bg-white', 'dark:text-gray-900'));
+        btn.classList.add('activeFilter', 'bg-gray-900', 'text-white');
+        if (root.classList.contains('dark')) {
+          btn.classList.add('dark:bg-white', 'dark:text-gray-900');
+        }
+
+        portfolioItems.forEach((item) => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, {
+      threshold: 0.2,
+    });
+
+    animationTargets.forEach((el) => observer.observe(el));
+
+    // Testimonial carousel
+    let testimonialIndex = 0;
+
+    const updateTestimonialCarousel = (index) => {
+      testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
+      testimonialDots.forEach((dot, i) => {
+        dot.classList.toggle('bg-gray-500', i === index);
+        dot.classList.toggle('bg-gray-300', i !== index);
+        dot.classList.toggle('dark:bg-gray-400', i === index);
+        dot.classList.toggle('dark:bg-gray-700', i !== index);
+      });
+      testimonialIndex = index;
+    };
+
+    testimonialDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = Number(dot.dataset.index);
+        updateTestimonialCarousel(index);
+      });
+    });
+
+    updateTestimonialCarousel(0);
+
+    setInterval(() => {
+      const nextIndex = (testimonialIndex + 1) % testimonialDots.length;
+      updateTestimonialCarousel(nextIndex);
+    }, 7000);
+
+    // Hero carousel
+    let heroIndex = 0;
+
+    const updateHeroCarousel = (index) => {
+      heroCarouselTrack.style.transform = `translateX(-${index * 100}%)`;
+      heroDots.forEach((dot, i) => {
+        dot.classList.toggle('bg-white', i === index);
+        dot.classList.toggle('bg-white/20', i !== index);
+      });
+      heroIndex = index;
+    };
+
+    heroDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        updateHeroCarousel(Number(dot.dataset.index));
+      });
+    });
+
+    heroPrev.addEventListener('click', () => {
+      const prev = heroIndex === 0 ? heroDots.length - 1 : heroIndex - 1;
+      updateHeroCarousel(prev);
+    });
+
+    heroNext.addEventListener('click', () => {
+      const next = (heroIndex + 1) % heroDots.length;
+      updateHeroCarousel(next);
+    });
+
+    let heroInterval;
+    const startHeroAutoplay = () => {
+      heroInterval = setInterval(() => {
+        const next = (heroIndex + 1) % heroDots.length;
+        updateHeroCarousel(next);
+      }, 5000);
+    };
+
+    const stopHeroAutoplay = () => clearInterval(heroInterval);
+
+    openHeroCarousel.addEventListener('click', () => {
+      heroCarouselModal.classList.remove('hidden');
+      updateHeroCarousel(0);
+      startHeroAutoplay();
+    });
+
+    closeHeroCarousel.addEventListener('click', () => {
+      heroCarouselModal.classList.add('hidden');
+      stopHeroAutoplay();
+    });
+
+    heroCarouselModal.addEventListener('click', (event) => {
+      if (event.target === heroCarouselModal) {
+        heroCarouselModal.classList.add('hidden');
+        stopHeroAutoplay();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (!heroCarouselModal.classList.contains('hidden')) {
+          heroCarouselModal.classList.add('hidden');
+          stopHeroAutoplay();
+        }
+        if (!lightbox.classList.contains('hidden')) {
+          lightbox.classList.add('hidden');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
